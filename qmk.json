@@ -1,4 +1,10 @@
 {
     "userspace_version": "1.0",
-    "build_targets": []
+    "build_targets": [
+        ["ferris/sweep", "sjb"],
+        ["beekeeb/piantor", "sjb"],
+        ["crkbd/rev1", "sjb"],
+        ["keyboardio/atreus", "sjb"],
+        ["pinky/3", "sjb"]
+    ]
 }
