@@ -182,25 +182,22 @@ enum custom_keycodes {
 #define TRANSPARENT_THUMB_CLUSTER _______, _______, _______
 #define RIGHT_TRANSPARENT_THUMB_CLUSTER(_key) _______, _______, _key
 
-#define LEFT_HOME_ROW_THUMB_CLUSTER  _______, TG(_NUMPAD), SB_RSTL
-#define RIGHT_HOME_ROW_THUMB_CLUSTER KC_TAB, TG(_MOUSE) , _______
-
-#define LEFT_RSTL_THUMB_CLUSTER  _______,  _______, SB_RSTL
-#define RIGHT_RSTL_THUMB_CLUSTER SB_RSTL, _______, _______
-
 #define LEFT_PRIMARY_THUMB_CLUSTER  OSM_SFT, SB_NAV, SB_BHRL
 #define RIGHT_PRIMARY_THUMB_CLUSTER SB_MOUSE , SB_RSE, OSM_GUI
 
 #define LEFT_RAISE_THUMB_CLUSTER  _______, _______, SB_RSTL
 #define RIGHT_RAISE_THUMB_CLUSTER _______, _______, _______
 
-#define LEFT_NAV_THUMB_CLUSTER  _______, _______, SB_RSTL
-#define RIGHT_NAV_THUMB_CLUSTER _______, _______, _______
-
 #define LEFT_NUMPAD_THUMB_CLUSTER  _______,  _______, SB_RSTL
 #define RIGHT_NUMPAD_THUMB_CLUSTER _______, KC_EQL, _______
 
+#define LEFT_NAV_THUMB_CLUSTER  _______, _______, SB_RSTL
+#define RIGHT_NAV_THUMB_CLUSTER _______, _______, _______
+
 #define LEFT_MOUSE_THUMB_CLUSTER  _______   , _______   , SB_RSTL
 #define RIGHT_MOUSE_THUMB_CLUSTER KC_MS_BTN1, KC_MS_BTN2, _______
+
+#define LEFT_HOME_ROW_THUMB_CLUSTER  _______, _______, SB_RSTL
+#define RIGHT_HOME_ROW_THUMB_CLUSTER KC_TAB, _______ , _______
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
