@@ -70,7 +70,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_HOME_ROW_THUMB_CLUSTER,
     RIGHT_HOME_ROW_THUMB_CLUSTER
   ),
-  /*
   [_RHRL] = LAYOUT_wrapper(
     _______ , TRANS_ROW     , TRANS_ROW , _______ ,
     _______ , LEFT_HOME_ROW , TRANS_ROW , _______ ,
@@ -85,7 +84,6 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_HOME_ROW_THUMB_CLUSTER,
     RIGHT_HOME_ROW_THUMB_CLUSTER
   ),
-  */
 };
 
 #ifdef OLED_ENABLE
@@ -128,10 +126,8 @@ const char *oled_layer_state_text(void) {
     case _MOUSE:
         return PSTR("MOU");
     case _BHRL:
-        /*
     case _RHRL:
     case _LHRL:
-        */
         return PSTR("HRM");
     default:
         return PSTR("DEF");
