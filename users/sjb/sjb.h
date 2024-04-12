@@ -99,10 +99,10 @@ enum custom_keycodes {
 #define HRM_COL4(...) SB_HRM_K4(__VA_ARGS__)
 #define HRM_COL5(...) SB_HRM_K5(__VA_ARGS__)
 
-#ifdef KEY_LOCK_ENABLE
-#define SB_EXTRA  QK_LOCK
+#ifdef LAYER_LOCK_ENABLE
+#define SB_EXTRA  SB_LLOCK
 #else
-#define SB_EXTRA  TO(_NUMPAD)
+#define SB_EXTRA  KC_NO
 #endif
 
 #define SB_RSE  RSE(KC_SPC)
@@ -157,7 +157,7 @@ enum custom_keycodes {
 
 #define FUNCPAD_ROW_1 KC_F1, KC_F2 , KC_F3 , KC_F4 , KC_PSCR
 #define FUNCPAD_ROW_2 KC_F5, KC_F6 , KC_F7 , KC_F8 , KC_INS
-#define FUNCPAD_ROW_3 KC_F9, KC_F10, KC_F11, KC_F12, TO(_NUMPAD)
+#define FUNCPAD_ROW_3 KC_F9, KC_F10, KC_F11, KC_F12, SB_EXTRA
 
 #define RIGHT_MOUSE_ROW_1 KC_BTN7, KC_BTN4, KC_MS_U, KC_BTN5, KC_BTN6
 #define RIGHT_MOUSE_ROW_2 KC_WH_U, KC_MS_L, KC_MS_D, KC_MS_R, KC_ACL0
@@ -169,7 +169,7 @@ enum custom_keycodes {
 
 #define LEFT_MOUSE_ROW_1 OSM_RALT, OSM_MEH, G(KC_SPC), C(KC_C), C(KC_X)
 #define LEFT_MOUSE_ROW_2 LEFT_HOME_ROW
-#define LEFT_MOUSE_ROW_3 KC_DEL  , SB_CWTG, OSM_HYPR , C(KC_V), TO(_MOUSE)
+#define LEFT_MOUSE_ROW_3 KC_DEL  , SB_CWTG, OSM_HYPR , C(KC_V), SB_EXTRA
 
 #define LEFT_SYS_ROW_1 OSM_RALT , OSM_MEH , OSM_CTL  , KC_LBRC, KC_RBRC
 #define LEFT_SYS_ROW_2 OSM_ALT  , OSM_GUI , OSM_SFT  , KC_LPRN, KC_RPRN
