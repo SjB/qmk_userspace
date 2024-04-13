@@ -14,6 +14,7 @@ UNICODE_ENABLE = no
 CAPS_WORD_ENABLE = yes
 REPEAT_KEY_ENABLE = yes
 ACHORDION_ENABLE = yes
+ORBITAL_MOUSE_ENABLE = no
 
 SB_LR_HOMEROW_LAYER = yes # homerow layer
 SB_HOMEROW_LAYER = yes
@@ -27,6 +28,14 @@ SRC += sjb.c
 ifeq ($(strip $(ACHORDION_ENABLE)), yes)
 SRC += features/achordion.c
 OPT_DEFS += -DACHORDION_ENABLE
+endif
+
+ifeq ($(strip $(ORBITAL_MOUSE_ENABLE)), yes)
+MOUSEKEY_ENABLE = no
+MOUSE_ENABLE = yes
+KEY_LOCK_ENABLE = no
+SRC += features/orbital_mouse.c
+OPT_DEFS += -DORBITAL_MOUSE_ENABLE
 endif
 
 ifeq ($(strip $(LAYER_LOCK_ENABLE)), yes)

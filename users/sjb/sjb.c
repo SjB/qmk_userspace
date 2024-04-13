@@ -22,6 +22,10 @@
 #include "features/achordion.h"
 #endif
 
+#ifdef ORBITAL_MOUSE_ENABLE
+#include "features/orbital_mouse.h"
+#endif
+
 #ifdef LAYER_LOCK_ENABLE
 #include "features/layer_lock.h"
 #endif
@@ -220,6 +224,10 @@ void matrix_scan_user(void) {
     achordion_task();
 #endif
 
+#ifdef ORBITAL_MOUSE_ENABLE
+    orbital_mouse_task();
+#endif
+
 #ifdef LAYER_LOCK_ENABLE
     layer_lock_task();
 #endif
@@ -255,6 +263,10 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 #ifdef ACHORDION_ENABLE
     if (!process_achordion(keycode, record)) { return false; }
+#endif
+
+#ifdef ORBITAL_MOUSE_ENABLE
+    if (!process_orbital_mouse(keycode, record)) { return false; }
 #endif
 
 #ifdef LAYER_LOCK_ENABLE
