@@ -18,6 +18,10 @@
 
 #include QMK_KEYBOARD_H
 
+#ifdef ORBITAL_MOUSE_ENABLE
+#include "features/orbital_mouse.h"
+#endif
+
 #define ARRAYSIZE(arr) sizeof(arr) / sizeof(arr[0])
 
 enum custom_keycodes {
@@ -161,9 +165,23 @@ enum custom_keycodes {
 #define FUNCPAD_ROW_3 KC_F9, KC_F10, KC_F11, KC_F12, SB_EXTRA
 
 
+#ifdef ORBITAL_MOUSE_ENABLE
+#define RIGHT_MOUSE_ROW_1 OM_SEL1, OM_W_U, OM_U   , OM_W_L, OM_HLDS
+#define RIGHT_MOUSE_ROW_2 OM_SEL2, OM_L  , OM_D   , OM_R  , OM_DBLS
+#define RIGHT_MOUSE_ROW_3 OM_SEL3, OM_W_D, OM_BTN3, OM_W_R, OM_BTN4
+
+#define LEFT_MOUSE_THUMB_CLUSTER  _______, _______, SB_RSTL
+#define RIGHT_MOUSE_THUMB_CLUSTER OM_BTNS, OM_BTN2, _______
+
+#else
 #define RIGHT_MOUSE_ROW_1 KC_BTN5, KC_WH_U, KC_MS_U, KC_WH_L, SB_LOCK
 #define RIGHT_MOUSE_ROW_2 KC_BTN4, KC_MS_L, KC_MS_D, KC_MS_R, KC_ACL1
 #define RIGHT_MOUSE_ROW_3 KC_BTN3, KC_WH_D, NK_TOGG, KC_WH_R, KC_ACL0
+
+#define LEFT_MOUSE_THUMB_CLUSTER  _______   , _______   , SB_RSTL
+#define RIGHT_MOUSE_THUMB_CLUSTER KC_MS_BTN1, KC_MS_BTN2, _______
+#endif
+
 #define RIGHT_NAV_ROW_1 KC_HOME , KC_PGUP, KC_UP  , KC_VOLU , KC_MPRV
 #define RIGHT_NAV_ROW_2 OSM_HYPR, KC_LEFT, KC_DOWN, KC_RIGHT, KC_MPLY
 #define RIGHT_NAV_ROW_3 KC_END  , KC_PGDN, KC_MUTE, KC_VOLD , KC_MNXT
@@ -194,9 +212,6 @@ enum custom_keycodes {
 
 #define LEFT_NAV_THUMB_CLUSTER  _______, _______, SB_RSTL
 #define RIGHT_NAV_THUMB_CLUSTER _______, _______, _______
-
-#define LEFT_MOUSE_THUMB_CLUSTER  _______   , _______   , SB_RSTL
-#define RIGHT_MOUSE_THUMB_CLUSTER KC_MS_BTN1, KC_MS_BTN2, _______
 
 #define LEFT_HOME_ROW_THUMB_CLUSTER  _______, _______, SB_RSTL
 #define RIGHT_HOME_ROW_THUMB_CLUSTER KC_TAB, _______ , _______
