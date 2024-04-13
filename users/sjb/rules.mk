@@ -17,6 +17,7 @@ ACHORDION_ENABLE = yes
 
 SB_LR_HOMEROW_LAYER = yes # homerow layer
 SB_HOMEROW_LAYER = yes
+SB_MOUSE_BTN_LOCK = yes
 SB_LAYER_SWITCH_COMBO_KEY = no
 SB_HR_COMBO_KEY = no
 SB_RSTL_ENABLE = yes
@@ -48,6 +49,10 @@ endif
 
 ifeq ($(strip $(SB_HOMEROW_LAYER)), yes)
 OPT_DEFS += -DSB_HOMEROW_LAYER
+endif
+
+ifeq ($(strip $(SB_MOUSE_BTN_LOCK)), yes)
+OPT_DEFS += -DSB_MOUSE_BTN_LOCK
 endif
 
 ifeq ($(strip $(SB_LAYER_SWITCH_COMBO_KEY)), yes)
