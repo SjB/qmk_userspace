@@ -110,6 +110,10 @@ enum custom_keycodes {
 #define SB_EXTRA  KC_NO
 #endif
 
+#ifdef KEY_LOCK_ENABLE
+#define SB_LOCK QK_LOCK
+#endif
+
 #define SB_RSE  RSE(KC_SPC)
 #define SB_NAV  NAV(KC_BSPC)
 #define SB_BHRL  BHRL(KC_ESC)
