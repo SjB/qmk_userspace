@@ -17,10 +17,10 @@ along with this program.  If not, see <http://www.gnu.org/licenses/>.
 */
 
 #include QMK_KEYBOARD_H
+
 #include "sjb.h"
 
 #include "version.h"
-#include <stdio.h>
 
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
  [_QWERTY] = LAYOUT_wrapper(
@@ -70,6 +70,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_HOME_ROW_THUMB_CLUSTER,
     RIGHT_HOME_ROW_THUMB_CLUSTER
   ),
+#ifdef SB_LR_HOMEROW_LAYER
   [_RHRL] = LAYOUT_wrapper(
     _______ , TRANS_ROW     , TRANS_ROW , _______ ,
     _______ , LEFT_HOME_ROW , TRANS_ROW , _______ ,
@@ -84,6 +85,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_HOME_ROW_THUMB_CLUSTER,
     RIGHT_HOME_ROW_THUMB_CLUSTER
   ),
+#endif
 };
 
 #ifdef OLED_ENABLE
@@ -126,8 +128,10 @@ const char *oled_layer_state_text(void) {
     case _MOUSE:
         return PSTR("MOU");
     case _BHRL:
+#ifdef SB_LR_HOMEROW_LAYER
     case _RHRL:
     case _LHRL:
+#endif
         return PSTR("HRM");
     default:
         return PSTR("DEF");
