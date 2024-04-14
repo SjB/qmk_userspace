@@ -93,17 +93,6 @@ oled_rotation_t oled_init_user(oled_rotation_t rotation) {
   return OLED_ROTATION_270;  // flips the display 180 degrees if offhand
 }
 
-/*
-void set_keylog(uint16_t keycode, keyrecord_t *record);
-
-bool process_record_sjb(uint16_t keycode, keyrecord_t *record) {
-  if (record->event.pressed) {
-    set_keylog(keycode, record);
-  }
-  return true;
-}
-*/
-
 const char *read_logo(void) {
     static const char PROGMEM logo[] = {
         0x80, 0x81, 0x82, 0x83, 0x84,
