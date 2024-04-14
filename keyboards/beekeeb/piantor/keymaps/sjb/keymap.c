@@ -53,6 +53,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_HOME_ROW_THUMB_CLUSTER,
     RIGHT_HOME_ROW_THUMB_CLUSTER
   ),
+#ifdef SB_LR_HOMEROW_LAYER
   [_RHRL] = LAYOUT_wrapper(
     _______, TRANS_ROW, TRANS_ROW, _______,
     _______, LEFT_HOME_ROW, TRANS_ROW, _______,
@@ -67,22 +68,38 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_HOME_ROW_THUMB_CLUSTER,
     RIGHT_HOME_ROW_THUMB_CLUSTER
   ),
+#endif
 };
 
 #ifdef RGBLIGHT_LAYERS
 
-#define _NLAYERS 5
 const rgblight_segment_t PROGMEM ll_0[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_OFF});
 const rgblight_segment_t PROGMEM ll_1[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_BLUE});
 const rgblight_segment_t PROGMEM ll_2[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_PURPLE});
 const rgblight_segment_t PROGMEM ll_3[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_GREEN});
 const rgblight_segment_t PROGMEM ll_4[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_YELLOW});
 const rgblight_segment_t PROGMEM ll_5[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_RED});
+
+#ifdef SB_LR_HOMEROW_LAYER
 const rgblight_segment_t PROGMEM ll_6[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_RED});
 const rgblight_segment_t PROGMEM ll_7[] = RGBLIGHT_LAYER_SEGMENTS({0, 2, HSV_RED});
+#endif
 
 const rgblight_segment_t* const PROGMEM ll_layers[] =
-    RGBLIGHT_LAYERS_LIST(ll_0,ll_1,ll_2,ll_3, ll_4, ll_5, ll_6, ll_7);
+    RGBLIGHT_LAYERS_LIST(
+                         ll_0,
+                         ll_1,
+                         ll_2,
+                         ll_3,
+                         ll_4,
+                         ll_5
+#ifdef SB_LR_HOMEROW_LAYER
+                         ,ll_6
+                         ,ll_7
+#endif
+                         );
+
+#define _NLAYERS (sizeof(ll_layers) / sizeof(ll_layers[0]))
 
 layer_state_t layer_state_set_keymap(layer_state_t state) {
     for (uint8_t i=0 ; i < _NLAYERS; i++)
