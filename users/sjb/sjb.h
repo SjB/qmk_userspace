@@ -26,7 +26,7 @@
 
 enum custom_keycodes {
   SB_LLOCK = SAFE_RANGE,
-  SB_LOCK,
+  SB_MS_HOLD,
   SB_RSTL,
   NEW_SAFE_RANGE
 };
@@ -111,7 +111,7 @@ enum custom_keycodes {
 #endif
 
 #ifdef KEY_LOCK_ENABLE
-#define SB_LOCK QK_LOCK
+#define SB_MS_HOLD QK_LOCK
 #endif
 
 #define SB_RSE  RSE(KC_SPC)
@@ -178,7 +178,7 @@ enum custom_keycodes {
 #define RIGHT_MOUSE_THUMB_CLUSTER OM_BTNS, OM_BTN2, _______
 
 #else
-#define RIGHT_MOUSE_ROW_1 KC_BTN5, KC_WH_U, KC_MS_U, KC_WH_L, SB_LOCK
+#define RIGHT_MOUSE_ROW_1 KC_BTN5, KC_WH_U, KC_MS_U, KC_WH_L, SB_MS_HOLD
 #define RIGHT_MOUSE_ROW_2 KC_BTN4, KC_MS_L, KC_MS_D, KC_MS_R, KC_ACL1
 #define RIGHT_MOUSE_ROW_3 KC_BTN3, KC_WH_D, NK_TOGG, KC_WH_R, KC_ACL0
 

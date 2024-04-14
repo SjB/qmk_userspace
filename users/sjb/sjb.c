@@ -42,46 +42,47 @@ layer_state_t layer_state_set_user(layer_state_t state) {
     return layer_state_set_keymap(state);
 }
 
-#ifdef SB_MOUSE_BTN_LOCK
-static bool lock_registered = false;
-static uint16_t lock_keycode = KC_NO;
+#ifdef SB_MOUSE_BTN_HOLD
+static bool hold_registered = false;
+static uint16_t held_keycode = KC_NO;
 
-void clear_mouse_lock(void) {
-    lock_registered = false;
-    unregister_code(lock_keycode);
-    lock_keycode = KC_NO;
+void clear_mouse_hold(void) {
+    hold_registered = false;
+    unregister_code(held_keycode);
+    held_keycode = KC_NO;
 }
 
-bool process_mouse_lock(uint16_t keycode, keyrecord_t *record) {
+bool process_mouse_hold(uint16_t keycode, keyrecord_t *record, uint16_t hold_keycode) {
     if (keycode > QK_ONE_SHOT_MOD && keycode <= QK_ONE_SHOT_MOD_MAX) {
         keycode = keycode ^ QK_ONE_SHOT_MOD;
     }
 
-    if (keycode == SB_LOCK) {
+    if (keycode == hold_keycode) {
         if (record->event.pressed) {
-            if (lock_keycode == KC_NO) {
-                lock_registered = true;
+            if (held_keycode == KC_NO) {
+                hold_registered = true;
             } else {
-                clear_mouse_lock();
+                clear_mouse_hold();
             }
         }
         return false;
     }
 
-    if (lock_registered) {
+    if (hold_registered) {
         if (!record->event.pressed) {
             if (IS_MOUSEKEY_BUTTON(keycode)) {
-                clear_mouse_lock();
-                lock_keycode = keycode;
-                register_code(lock_keycode);
+                clear_mouse_hold();
+                held_keycode = keycode;
+                register_code(held_keycode);
                 return false;
             }
+            hold_registered = false;
         }
     }
 
-    if (keycode == lock_keycode) {
+    if (keycode == held_keycode) {
         if (!record->event.pressed) {
-            clear_mouse_lock();
+            clear_mouse_hold();
             return false;
         }
     }
@@ -249,8 +250,8 @@ bool process_reset_layer(uint16_t keycode, keyrecord_t* record) {
             clear_oneshot_mods();
             clear_mods();
             clear_weak_mods();
-#ifdef SB_MOUSE_BTN_LOCK
-            clear_mouse_lock();
+#ifdef SB_MOUSE_BTN_HOLD
+            clear_mouse_hold();
 #endif
             return false;
         }
@@ -277,8 +278,8 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
     if (!process_reset_layer(keycode, record)) { return false; }
 #endif
 
-#ifdef SB_MOUSE_BTN_LOCK
-    if (!process_mouse_lock(keycode, record)) { return false; }
+#ifdef SB_MOUSE_BTN_HOLD
+    if (!process_mouse_hold(keycode, record, SB_MS_HOLD)) { return false; }
 #endif
 
     if (!process_special_keys(keycode, record)) { return false; }
