@@ -18,7 +18,7 @@ ORBITAL_MOUSE_ENABLE = no
 
 SB_LR_HOMEROW_LAYER = yes # homerow layer
 SB_HOMEROW_LAYER = yes
-SB_MOUSE_BTN_LOCK = yes
+SB_MOUSE_BTN_HOLD = yes
 SB_LAYER_SWITCH_COMBO_KEY = no
 SB_HR_COMBO_KEY = no
 SB_RSTL_ENABLE = yes
@@ -60,8 +60,8 @@ ifeq ($(strip $(SB_HOMEROW_LAYER)), yes)
 OPT_DEFS += -DSB_HOMEROW_LAYER
 endif
 
-ifeq ($(strip $(SB_MOUSE_BTN_LOCK)), yes)
-OPT_DEFS += -DSB_MOUSE_BTN_LOCK
+ifeq ($(strip $(SB_MOUSE_BTN_HOLD)), yes)
+OPT_DEFS += -DSB_MOUSE_BTN_HOLD
 endif
 
 ifeq ($(strip $(SB_LAYER_SWITCH_COMBO_KEY)), yes)
