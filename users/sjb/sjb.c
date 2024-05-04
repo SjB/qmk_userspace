@@ -19,19 +19,18 @@
 #include "sjb.h"
 
 #ifdef ACHORDION_ENABLE
-#include "features/achordion.h"
+#    include "features/achordion.h"
 #endif
 
 #ifdef ORBITAL_MOUSE_ENABLE
-#include "features/orbital_mouse.h"
+#    include "features/orbital_mouse.h"
 #endif
 
 #ifdef LAYER_LOCK_ENABLE
-#include "features/layer_lock.h"
+#    include "features/layer_lock.h"
 #endif
 
-__attribute__ ((weak))
-layer_state_t layer_state_set_keymap(layer_state_t state) {
+__attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) {
     return state;
 }
 
@@ -43,8 +42,8 @@ layer_state_t layer_state_set_user(layer_state_t state) {
 }
 
 #ifdef SB_MOUSE_BTN_HOLD
-static bool hold_registered = false;
-static uint16_t held_keycode = KC_NO;
+static bool     hold_registered = false;
+static uint16_t held_keycode    = KC_NO;
 
 void clear_mouse_hold(void) {
     hold_registered = false;
@@ -52,7 +51,7 @@ void clear_mouse_hold(void) {
     held_keycode = KC_NO;
 }
 
-bool process_mouse_hold(uint16_t keycode, keyrecord_t *record, uint16_t hold_keycode) {
+bool process_mouse_hold(uint16_t keycode, keyrecord_t* record, uint16_t hold_keycode) {
     if (keycode > QK_ONE_SHOT_MOD && keycode <= QK_ONE_SHOT_MOD_MAX) {
         keycode = keycode ^ QK_ONE_SHOT_MOD;
     }
@@ -91,7 +90,7 @@ bool process_mouse_hold(uint16_t keycode, keyrecord_t *record, uint16_t hold_key
 #endif
 
 static uint8_t mod_state;
-bool process_special_keys(uint16_t keycode, keyrecord_t *record) {
+bool           process_special_keys(uint16_t keycode, keyrecord_t* record) {
     mod_state = get_mods();
 
 #ifdef SB_THUMB_TAB
@@ -145,17 +144,17 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     // lead to missed triggers in fast typing. Here, returning 0 means we
     // instead want to "force hold" and disable key repeating.
     if (IS_QK_MOD_TAP(keycode) || IS_QK_LAYER_TAP(keycode)) {
-        switch (keycode & 0xff) {  // strip mod tap
-        case KC_H:
-        case KC_J:
-        case KC_K:
-        case KC_L:
-        case KC_BSPC:
-        case KC_SPC:
-            return QUICK_TAP_TERM;
+        switch (keycode & 0xff) { // strip mod tap
+            case KC_H:
+            case KC_J:
+            case KC_K:
+            case KC_L:
+            case KC_BSPC:
+            case KC_SPC:
+                return QUICK_TAP_TERM;
         }
     }
-    return 0;  // Otherwise, force hold and disable key repeating.
+    return 0; // Otherwise, force hold and disable key repeating.
 }
 
 #ifdef ACHORDION_ENABLE
@@ -181,42 +180,46 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
 }
 */
 
-bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record,
-                     uint16_t other_keycode, keyrecord_t* other_record) {
-  switch (tap_hold_keycode) {
-  case SB_NAV:
-  case SB_RSE:
-  case SB_MOUSE:
-  case SB_BHRL:
-      return true;
-  }
+bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
+    switch (tap_hold_keycode) {
+        case SB_NAV:
+        case SB_RSE:
+        case SB_MOUSE:
+        case SB_BHRL:
+            return true;
+    }
 
-  // Otherwise, follow the opposite hands rule.
-  return achordion_opposite_hands(tap_hold_record, other_record);
+    // Otherwise, follow the opposite hands rule.
+    return achordion_opposite_hands(tap_hold_record, other_record);
 }
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
-  return 800;  // Use a timeout of 800 ms.
+    switch (tap_hold_keycode) {
+        case SB_NAV:
+        case SB_BHRL:
+        case SB_MOUSE:
+            return 0;
+    }
+    return 800; // Use a timeout of 800 ms.
 }
 
 uint16_t achordion_streak_timeout(uint16_t tap_hold_keycode) {
-  if (IS_QK_LAYER_TAP(tap_hold_keycode) || IS_QK_MOD_TAP(tap_hold_keycode)) {
-    return 0;  // Disable streak detection on layer-tap keys.
-  }
+    if (IS_QK_LAYER_TAP(tap_hold_keycode) || IS_QK_MOD_TAP(tap_hold_keycode)) {
+        return 50; // Disable streak detection on layer-tap keys.
+    }
 
-  // Otherwise, tap_hold_keycode is a mod-tap key.
-  /*
-  uint8_t mod = mod_config(QK_MOD_TAP_GET_MODS(tap_hold_keycode));
-  if ((mod & MOD_LSFT) != 0) {
-    return 50;  // Disable is 0 for Shift mod-tap keys.
-  }
-  */
-  return 100;
+    // Otherwise, tap_hold_keycode is a mod-tap key.
+    /*
+    uint8_t mod = mod_config(QK_MOD_TAP_GET_MODS(tap_hold_keycode));
+    if ((mod & MOD_LSFT) != 0) {
+      return 50;  // Disable is 0 for Shift mod-tap keys.
+    }
+    */
+    return 100;
 }
 #endif
 
-__attribute__ ((weak))
-void matrix_scan_sjb(void) {
+__attribute__((weak)) void matrix_scan_sjb(void) {
     return;
 }
 
@@ -236,8 +239,7 @@ void matrix_scan_user(void) {
     matrix_scan_sjb();
 }
 
-__attribute__  ((weak))
-bool process_record_sjb(uint16_t keycode, keyrecord_t* record) {
+__attribute__((weak)) bool process_record_sjb(uint16_t keycode, keyrecord_t* record) {
     return true;
 }
 
@@ -250,9 +252,9 @@ bool process_reset_layer(uint16_t keycode, keyrecord_t* record) {
             clear_oneshot_mods();
             clear_mods();
             clear_weak_mods();
-#ifdef SB_MOUSE_BTN_HOLD
+#    ifdef SB_MOUSE_BTN_HOLD
             clear_mouse_hold();
-#endif
+#    endif
             return false;
         }
     }
@@ -261,38 +263,53 @@ bool process_reset_layer(uint16_t keycode, keyrecord_t* record) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
-
 #ifdef ACHORDION_ENABLE
-    if (!process_achordion(keycode, record)) { return false; }
+    if (!process_achordion(keycode, record)) {
+        return false;
+    }
 #endif
 
 #ifdef ORBITAL_MOUSE_ENABLE
-    if (!process_orbital_mouse(keycode, record)) { return false; }
+    if (!process_orbital_mouse(keycode, record)) {
+        return false;
+    }
 #endif
 
 #ifdef LAYER_LOCK_ENABLE
-    if (!process_layer_lock(keycode, record, SB_LLOCK)) { return false; }
+    if (!process_layer_lock(keycode, record, SB_LLOCK)) {
+        return false;
+    }
 #endif
 
 #ifdef SB_RSTL_ENABLE
-    if (!process_reset_layer(keycode, record)) { return false; }
+    if (!process_reset_layer(keycode, record)) {
+        return false;
+    }
 #endif
 
 #ifdef SB_MOUSE_BTN_HOLD
-    if (!process_mouse_hold(keycode, record, SB_MS_HOLD)) { return false; }
+    if (!process_mouse_hold(keycode, record, SB_MS_HOLD)) {
+        return false;
+    }
 #endif
 
-    if (!process_special_keys(keycode, record)) { return false; }
+    if (!process_special_keys(keycode, record)) {
+        return false;
+    }
 
-    if (!process_record_sjb(keycode, record)) { return false; }
+    if (!process_record_sjb(keycode, record)) {
+        return false;
+    }
 
     return true;
 }
 
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t *record) {
+#ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
     if (IS_QK_LAYER_TAP(keycode)) {
         return true;
     }
 
     return false;
 }
+#endif
