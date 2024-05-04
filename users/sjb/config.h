@@ -15,7 +15,7 @@
  */
 
 #ifdef TAPPING_TERM
-    #undef TAPPING_TERM
+#    undef TAPPING_TERM
 #endif
 
 #define TAPPING_TERM 200 // default 200
@@ -28,14 +28,14 @@
 
 #define COMBO_TERM 60
 #define COMBO_ONLY_FROM_LAYER 0
-//#define COMBO_MUST_HOLD_MODS
-//#define COMBO_HOLD_TERM 175
+// #define COMBO_MUST_HOLD_MODS
+// #define COMBO_HOLD_TERM 175
 
 // Mouse Settings: Smoothing out mouse movement on keypress
 #define MK_COMBINED
 #ifndef MOUSEKEY_INTERVAL
-    #undef MOUSEKEY_INTERVAL
-    #define MOUSEKEY_INTERVAL 16
+#    undef MOUSEKEY_INTERVAL
+#    define MOUSEKEY_INTERVAL 16
 #endif
 #define MOUSEKEY_DELAY 0
 #define MOUSEKEY_TIME_TO_MAX 40
@@ -46,7 +46,6 @@
 
 #define LAYER_LOCK_IDLE_TIMEOUT 60000 // Turn off after 60 seconds.
 
-//#define IGNORE_MOD_TAP_INTERRUPT
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TIMEOUT 2000
 
