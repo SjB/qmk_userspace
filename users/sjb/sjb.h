@@ -219,13 +219,13 @@ enum sjb_layers {
 #define LEFT_RAISE_THUMB_CLUSTER  _______, _______, SB_RSTL
 #define RIGHT_RAISE_THUMB_CLUSTER _______, _______, _______
 
-#define LEFT_NUMPAD_THUMB_CLUSTER  _______,  _______, SB_RSTL
-#define RIGHT_NUMPAD_THUMB_CLUSTER _______, KC_EQL, _______
+#define LEFT_NUMPAD_THUMB_CLUSTER  _______, _______, SB_RSTL
+#define RIGHT_NUMPAD_THUMB_CLUSTER _______, KC_EQL , _______
 
 #define LEFT_NAV_THUMB_CLUSTER  _______, _______, SB_RSTL
 #define RIGHT_NAV_THUMB_CLUSTER _______, _______, _______
 
 #define LEFT_HOME_ROW_THUMB_CLUSTER  _______, _______, SB_RSTL
-#define RIGHT_HOME_ROW_THUMB_CLUSTER _______, _______ , _______
+#define RIGHT_HOME_ROW_THUMB_CLUSTER KC_TAB , _______, _______
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)
