@@ -182,10 +182,10 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
 
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
     switch (tap_hold_keycode) {
-        case SB_NAV:
-        case SB_RSE:
-        case SB_MOUSE:
-        case SB_BHRL:
+        case SB_BSPC:
+        case SB_SPC:
+        case SB_ESC:
+        case SB_ENT:
             return true;
     }
 
@@ -195,9 +195,9 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
 
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
-        case SB_NAV:
-        case SB_BHRL:
-        case SB_MOUSE:
+        case SB_BSPC:
+        case SB_ENT:
+        case SB_ESC:
             return 0;
     }
     return 800; // Use a timeout of 800 ms.
