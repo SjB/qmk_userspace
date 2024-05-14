@@ -31,14 +31,20 @@ enum custom_keycodes {
   NEW_SAFE_RANGE
 };
 
-#define _QWERTY 0
-#define _RAISE 1
-#define _NAV 2
-#define _NUMPAD 3
-#define _MOUSE 4
-#define _BHRL 5
-#define _RHRL 6
-#define _LHRL 7
+enum sjb_layers {
+    _QWERTY = 0x0,
+    _RAISE,
+    _NAV,
+    _NUMPAD,
+    _MOUSE,
+    _BHRL,
+#ifdef SB_LR_HOMEROW_LAYER
+    _RHRL,
+    _LHRL,
+#endif
+};
+
+#define _THIRD_LAYER _MOUSE
 
 #define OSL_RSE OSL(_RAISE)
 #define OSL_NUM OSL(_NUMPAD)
@@ -48,6 +54,7 @@ enum custom_keycodes {
 #define NAV(_key) LT(_NAV, _key)
 #define RSE(_key) LT(_RAISE, _key)
 #define MOUSE(_key) LT(_MOUSE, _key)
+#define NUM(_key) LT(_NUMPAD, _key)
 
 #ifdef SB_LR_HOMEROW_LAYER
 #define SB_RHRL(_key) LT(_RHRL, _key)

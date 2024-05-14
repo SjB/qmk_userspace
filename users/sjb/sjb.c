@@ -35,9 +35,9 @@ __attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) 
 }
 
 layer_state_t layer_state_set_user(layer_state_t state) {
-    if (!is_layer_locked(_NUMPAD)) {
-        state = update_tri_layer_state(state, _RAISE, _NAV, _NUMPAD);
-    }
+    if (!is_layer_locked(_THIRD_LAYER)) {
+        state = update_tri_layer_state(state, _RAISE, _NAV, _THIRD_LAYER);
+}
     return layer_state_set_keymap(state);
 }
 
