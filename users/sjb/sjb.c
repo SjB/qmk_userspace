@@ -18,6 +18,10 @@
 
 #include "sjb.h"
 
+#ifdef SMTD_ENABLE
+#    include "features/sm_td.h"
+#endif
+
 #ifdef ACHORDION_ENABLE
 #    include "features/achordion.h"
 #endif
@@ -263,6 +267,13 @@ bool process_reset_layer(uint16_t keycode, keyrecord_t* record) {
 #endif
 
 bool process_record_user(uint16_t keycode, keyrecord_t* record) {
+
+#ifdef SMTD_ENABLE
+    if (!process_smtd(keycode, record)) {
+        return false;
+    }
+#endif
+
 #ifdef ACHORDION_ENABLE
     if (!process_achordion(keycode, record)) {
         return false;
@@ -311,5 +322,20 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
     }
 
     return false;
+}
+#endif
+
+#ifdef SMTD_ENABLE
+void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+    switch(keycode) {
+        SMTD_MT(CKC_A, KC_A, KC_LEFT_ALT)
+        SMTD_MT(CKC_S, KC_S, KC_LEFT_GUI)
+        SMTD_MT(CKC_D, KC_D, KC_LEFT_CTRL)
+        SMTD_MT(CKC_F, KC_F, KC_LSFT)
+        SMTD_MT(CKC_J, KC_J, KC_RSFT)
+        SMTD_MT(CKC_K, KC_K, KC_RIGHT_CTRL)
+        SMTD_MT(CKC_L, KC_L, KC_RIGHT_GUI)
+        SMTD_MT(CKC_SCLN, KC_SCLN, KC_LEFT_ALT)
+    }
 }
 #endif

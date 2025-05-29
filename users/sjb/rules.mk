@@ -10,6 +10,7 @@ COMMAND_ENABLE = no
 LAYER_LOCK_ENABLE = yes
 CAPS_WORD_ENABLE = yes
 ACHORDION_ENABLE = yes
+SMTD_ENABLE = no
 # ORBITAL_MOUSE_ENABLE = no
 
 # SB_LR_HOMEROW_LAYER = yes # homerow layer
@@ -24,6 +25,11 @@ SRC += sjb.c
 ifeq ($(strip $(ACHORDION_ENABLE)), yes)
 SRC += features/achordion.c
 OPT_DEFS += -DACHORDION_ENABLE
+endif
+
+ifeq ($(strip $(SMTD_ENABLE)), yes)
+DEFERRED_EXEC_ENABLE = yes
+OPT_DEFS += -DSMTD_ENABLE
 endif
 
 ifeq ($(strip $(ORBITAL_MOUSE_ENABLE)), yes)

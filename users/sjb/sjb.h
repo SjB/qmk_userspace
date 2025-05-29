@@ -28,6 +28,18 @@ enum custom_keycodes {
   SB_LLOCK = SAFE_RANGE,
   SB_MS_HOLD,
   SB_RSTL,
+#ifdef SMTD_ENABLE
+  SMTD_KEYCODES_BEGIN,
+  CKC_A,
+  CKC_S,
+  CKC_D,
+  CKC_F,
+  CKC_J,
+  CKC_K,
+  CKC_L,
+  CKC_SCLN,
+  SMTD_KEYCODES_END,
+#endif
   NEW_SAFE_RANGE
 };
 
@@ -94,6 +106,9 @@ enum sjb_layers {
 #ifdef ACHORDION_ENABLE
 #    define LHRM(k1, k2, k3, k4, k5) LALT_T(k1), LGUI_T(k2), LCTL_T(k3), LSFT_T(k4), SB_LHRL(k5)
 #    define RHRM(k1, k2, k3, k4, k5) SB_RHRL(k1), RSFT_T(k2), RCTL_T(k3), RGUI_T(k4), LALT_T(k5)
+#elif defined(SMTD_ENABLE)
+#    define LHRM(k1, k2, k3, k4, k5) CKC_A, CKC_S, CKC_D, CKC_F, KC_G
+#    define RHRM(k1, k2, k3, k4, k5) KC_J , CKC_J, CKC_K, CKC_L, CKC_SCLN
 #else
 #    define LHRM(k1, k2, k3, k4, k5) k1, k2, k3, k4, k5
 #    define RHRM(k1, k2, k3, k4, k5) k1, k2, k3, k4, k5
