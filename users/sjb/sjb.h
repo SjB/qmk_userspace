@@ -142,8 +142,8 @@ enum sjb_layers {
 #define SB_ESC  NUM(KC_ESC)
 // #define SB_ESC   MOUSE(KC_ESC)
 
-#define CB_LLEADER SB_NAV
-#define CB_RLEADER SB_RSE
+#define CB_LLEADER SB_BSPC
+#define CB_RLEADER SB_SPC
 
 // #define SB_SFT_BSPC SB_NAV
 // #define SB_THUMB_TAB ESC_CTL
@@ -224,8 +224,8 @@ enum sjb_layers {
 #define RIGHT_TRANSPARENT_THUMB_CLUSTER(_key) _key   , _______, _______
 #define LEFT_TRANSPARENT_THUMB_CLUSTER(_key)  _______, _______, _key
 
-#define LEFT_PRIMARY_THUMB_CLUSTER  OSM_SFT, SB_BSPC, SB_ESC
-#define RIGHT_PRIMARY_THUMB_CLUSTER SB_ENT , SB_SPC , OSM_GUI
+#define LEFT_PRIMARY_THUMB_CLUSTER  SB_CWTG, SB_BSPC, SB_ESC
+#define RIGHT_PRIMARY_THUMB_CLUSTER SB_ENT , SB_SPC , OSM_SFT
 
 #define LEFT_RAISE_THUMB_CLUSTER    _______, _______, SB_RSTL
 #define RIGHT_RAISE_THUMB_CLUSTER   TRANSPARENT_THUMB_CLUSTER
