@@ -127,7 +127,7 @@ enum sjb_layers {
 #define HRM_COL5(...) SB_HRM_K5(__VA_ARGS__)
 
 #ifdef LAYER_LOCK_ENABLE
-#    define SB_EXTRA SB_LLOCK
+#    define SB_EXTRA QK_LLCK
 #else
 #    define SB_EXTRA KC_NO
 #endif

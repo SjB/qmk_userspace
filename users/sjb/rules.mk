@@ -40,11 +40,6 @@ SRC += features/orbital_mouse.c
 OPT_DEFS += -DORBITAL_MOUSE_ENABLE
 endif
 
-ifeq ($(strip $(LAYER_LOCK_ENABLE)), yes)
-SRC+= features/layer_lock.c
-OPT_DEFS += -DLAYER_LOCK_ENABLE
-endif
-
 ifeq ($(strip $(COMBO_ENABLE)), yes)
 INTROSPECTION_KEYMAP_C += combos.c
 endif

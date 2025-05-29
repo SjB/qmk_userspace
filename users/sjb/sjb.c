@@ -30,10 +30,6 @@
 #    include "features/orbital_mouse.h"
 #endif
 
-#ifdef LAYER_LOCK_ENABLE
-#    include "features/layer_lock.h"
-#endif
-
 __attribute__((weak)) layer_state_t layer_state_set_keymap(layer_state_t state) {
     return state;
 }
@@ -236,10 +232,6 @@ void matrix_scan_user(void) {
     orbital_mouse_task();
 #endif
 
-#ifdef LAYER_LOCK_ENABLE
-    layer_lock_task();
-#endif
-
     matrix_scan_sjb();
 }
 
@@ -282,12 +274,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
 #ifdef ORBITAL_MOUSE_ENABLE
     if (!process_orbital_mouse(keycode, record)) {
-        return false;
-    }
-#endif
-
-#ifdef LAYER_LOCK_ENABLE
-    if (!process_layer_lock(keycode, record, SB_LLOCK)) {
         return false;
     }
 #endif
