@@ -103,7 +103,7 @@ enum sjb_layers {
 #define OSM_MEH OSM(MOD_MEH)
 #define OSM_HYPR OSM(MOD_HYPR)
 
-#ifdef ACHORDION_ENABLE
+#if defined(ACHORDION_ENABLE) || defined(FLOW_TAP_TERM)
 #    define LHRM(k1, k2, k3, k4, k5) LALT_T(k1), LGUI_T(k2), LCTL_T(k3), LSFT_T(k4), SB_LHRL(k5)
 #    define RHRM(k1, k2, k3, k4, k5) SB_RHRL(k1), RSFT_T(k2), RCTL_T(k3), RGUI_T(k4), LALT_T(k5)
 #elif defined(SMTD_ENABLE)
