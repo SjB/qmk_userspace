@@ -104,8 +104,8 @@ enum sjb_layers {
 #define OSM_HYPR OSM(MOD_HYPR)
 
 #if defined(ACHORDION_ENABLE) || defined(FLOW_TAP_TERM)
-#    define LHRM(k1, k2, k3, k4, k5) LALT_T(k1), LGUI_T(k2), LCTL_T(k3), LSFT_T(k4), SB_LHRL(k5)
-#    define RHRM(k1, k2, k3, k4, k5) SB_RHRL(k1), RSFT_T(k2), RCTL_T(k3), RGUI_T(k4), LALT_T(k5)
+#    define LHRM(k1, k2, k3, k4, k5) LALT_T(k1), LGUI_T(k2), LCTL_T(k3), LSFT_T(k4), HYPR_T(k5)
+#    define RHRM(k1, k2, k3, k4, k5) HYPR_T(k1), RSFT_T(k2), RCTL_T(k3), RGUI_T(k4), LALT_T(k5)
 #elif defined(SMTD_ENABLE)
 #    define LHRM(k1, k2, k3, k4, k5) CKC_A, CKC_S, CKC_D, CKC_F, KC_G
 #    define RHRM(k1, k2, k3, k4, k5) KC_J , CKC_J, CKC_K, CKC_L, CKC_SCLN
@@ -158,7 +158,7 @@ enum sjb_layers {
 #define TRANS_ROW _______, _______, _______, _______, _______
 #define BLANK_ROW KC_NO, KC_NO, KC_NO, KC_NO, KC_NO
 
-#define LEFT_HOME_ROW  OSM_ALT , OSM_GUI, OSM_SFT, OSM_CTL, SB_CWTG
+#define LEFT_HOME_ROW  OSM_ALT , OSM_GUI, OSM_SFT, OSM_CTL, OSM_HYPR
 #define RIGHT_HOME_ROW OSM_HYPR, OSM_CTL, OSM_SFT, OSM_GUI, OSM_ALT
 
 #define LEFT_FUNC_ROW  KC_F1, KC_F2, KC_F3, KC_F4, KC_F5
@@ -201,7 +201,7 @@ enum sjb_layers {
 
 #else
 #    define RIGHT_MOUSE_ROW_1 KC_BTN4, KC_WH_U, KC_MS_U, KC_WH_L, SB_MS_HOLD
-#    define RIGHT_MOUSE_ROW_2 OSM_HYPR, KC_MS_L, KC_MS_D, KC_MS_R, KC_ACL1
+#    define RIGHT_MOUSE_ROW_2 OSM_RALT, KC_MS_L, KC_MS_D, KC_MS_R, KC_ACL1
 #    define RIGHT_MOUSE_ROW_3 KC_BTN3, KC_WH_D, NK_TOGG, KC_WH_R, KC_ACL0
 
 #    define LEFT_MOUSE_THUMB_CLUSTER  _______, _______, SB_RSTL
@@ -209,10 +209,10 @@ enum sjb_layers {
 #endif
 
 #define RIGHT_NAV_ROW_1 KC_HOME , KC_PGUP, KC_UP  , KC_VOLU , KC_MPRV
-#define RIGHT_NAV_ROW_2 OSM_HYPR, KC_LEFT, KC_DOWN, KC_RIGHT, KC_MPLY
+#define RIGHT_NAV_ROW_2 OSM_RALT, KC_LEFT, KC_DOWN, KC_RIGHT, KC_MPLY
 #define RIGHT_NAV_ROW_3 KC_END  , KC_PGDN, KC_MUTE, KC_VOLD , KC_MNXT
 
-#define LEFT_MOUSE_ROW_1 OSM_RALT, OSM_MEH, OSM_HYPR, G(KC_SPC), KC_PSCR
+#define LEFT_MOUSE_ROW_1 SB_CWTG, OSM_MEH, OSM_HYPR, G(KC_SPC), KC_PSCR
 #define LEFT_MOUSE_ROW_2 LEFT_HOME_ROW
 #define LEFT_MOUSE_ROW_3 KC_DEL, C(KC_X), C(KC_C), C(KC_V), SB_EXTRA
 
