@@ -4,3 +4,4 @@ WS2812_DRIVER = vendor
 
 RGBLIGHT_SUPPORTED = yes
 RGBLIGHT_ENABLE = yes    # Enable WS2812 RGB underlight.
+SWAP_HANDS_ENABLE = yes

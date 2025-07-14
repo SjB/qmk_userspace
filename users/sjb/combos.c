@@ -84,6 +84,10 @@ SJB_DEFINE_KEY(CK_TG_MOUSE, CB_RLEADER, HRM_COL1(RIGHT_QW_ROW_2));
 
 #endif
 
+#if defined(SWAP_HANDS_ENABLE)
+SJB_DEFINE_KEY(CK_SWAP_HANDS, SB_BSPC, SB_ESC);
+#endif
+
 combo_t key_combos[] = {
     SJB_COMBO(CK_LBOOT, QK_BOOT),
     SJB_COMBO(CK_RBOOT, QK_BOOT),
@@ -143,6 +147,11 @@ combo_t key_combos[] = {
 #endif
 
 #endif
+
+#if defined(SWAP_HANDS_ENABLE)
+    SJB_COMBO(CK_SWAP_HANDS, SH_OS),
+#endif
+
 
 };
 

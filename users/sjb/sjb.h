@@ -224,7 +224,12 @@ enum sjb_layers {
 #define RIGHT_TRANSPARENT_THUMB_CLUSTER(_key) _key   , _______, _______
 #define LEFT_TRANSPARENT_THUMB_CLUSTER(_key)  _______, _______, _key
 
-#define LEFT_PRIMARY_THUMB_CLUSTER  SB_CWTG, SB_BSPC, SB_ESC
+#if defined(SWAP_HANDS_ENABLE)
+#   define LEFT_PRIMARY_THUMB_CLUSTER  SH_OS, SB_BSPC, SB_ESC
+#else
+#   define LEFT_PRIMARY_THUMB_CLUSTER  SB_CWTG, SB_BSPC, SB_ESC
+#endif
+
 #define RIGHT_PRIMARY_THUMB_CLUSTER SB_ENT , SB_SPC , OSM_SFT
 
 #define LEFT_RAISE_THUMB_CLUSTER    _______, _______, SB_RSTL
