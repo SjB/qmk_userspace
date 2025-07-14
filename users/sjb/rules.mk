@@ -9,7 +9,8 @@ CONSOLE_ENABLE = no
 COMMAND_ENABLE = no
 LAYER_LOCK_ENABLE = yes
 CAPS_WORD_ENABLE = yes
-ACHORDION_ENABLE = yes
+ACHORDION_ENABLE = no
+CHORDAL_HOLD_ENABLE = yes
 SMTD_ENABLE = no
 # ORBITAL_MOUSE_ENABLE = no
 
@@ -25,6 +26,10 @@ SRC += sjb.c
 ifeq ($(strip $(ACHORDION_ENABLE)), yes)
 SRC += features/achordion.c
 OPT_DEFS += -DACHORDION_ENABLE
+endif
+
+ifeq ($(strip $(CHORDAL_HOLD_ENABLE)), yes)
+OPT_DEFS += -DCHORDAL_HOLD
 endif
 
 ifeq ($(strip $(SMTD_ENABLE)), yes)

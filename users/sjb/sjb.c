@@ -145,6 +145,11 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     // instead want to "force hold" and disable key repeating.
     if (IS_QK_MOD_TAP(keycode) || IS_QK_LAYER_TAP(keycode)) {
         switch (keycode & 0xff) { // strip mod tap
+            case KC_G:
+            case KC_F:
+            case KC_D:
+            case KC_S:
+            case KC_A:
             case KC_H:
             case KC_J:
             case KC_K:
@@ -156,6 +161,20 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     }
     return 0; // Otherwise, force hold and disable key repeating.
 }
+
+#ifdef  CHORDAL_HOLD
+bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode,  keyrecord_t*  other_record) {
+    // If the keycode is a chordal hold key, return true.
+    switch (tap_hold_keycode) {
+        case SB_BSPC:
+        case SB_SPC:
+        case SB_ESC:
+        case SB_ENT:
+            return true;
+    }
+    return get_chordal_hold_default(tap_hold_record, other_record);
+}
+#endif
 
 #ifdef ACHORDION_ENABLE
 
