@@ -49,14 +49,20 @@ enum sjb_layers {
     _NAV,
     _NUMPAD,
     _MOUSE,
+#ifdef SB_HOMEROW_LAYER
     _BHRL,
+#endif
 #ifdef SB_LR_HOMEROW_LAYER
     _RHRL,
     _LHRL,
 #endif
 };
 
+#ifdef SB_HOMEROW_LAYER
+#define _THIRD_LAYER _BHRL
+#else
 #define _THIRD_LAYER _MOUSE
+#endif
 
 #define OSL_RSE OSL(_RAISE)
 #define OSL_NUM OSL(_NUMPAD)
@@ -138,7 +144,7 @@ enum sjb_layers {
 
 #define SB_SPC  RSE(KC_SPC)
 #define SB_BSPC NAV(KC_BSPC)
-#define SB_ENT  BHRL(KC_ENT)
+#define SB_ENT  MOUSE(KC_ENT)
 #define SB_ESC  NUM(KC_ESC)
 // #define SB_ESC   MOUSE(KC_ESC)
 
@@ -200,12 +206,12 @@ enum sjb_layers {
 #    define RIGHT_MOUSE_THUMB_CLUSTER OM_BTNS, OM_BTN2, _______
 
 #else
-#    define RIGHT_MOUSE_ROW_1 KC_BTN4, KC_WH_U, KC_MS_U, KC_WH_L, SB_MS_HOLD
-#    define RIGHT_MOUSE_ROW_2 OSM_RALT, KC_MS_L, KC_MS_D, KC_MS_R, KC_ACL1
-#    define RIGHT_MOUSE_ROW_3 KC_BTN3, KC_WH_D, NK_TOGG, KC_WH_R, KC_ACL0
+#    define RIGHT_MOUSE_ROW_1 MS_BTN4,  MS_WHLU, MS_UP,   MS_WHLL, SB_MS_HOLD
+#    define RIGHT_MOUSE_ROW_2 OSM_RALT, MS_LEFT, MS_DOWN, MS_RGHT, MS_ACL1
+#    define RIGHT_MOUSE_ROW_3 MS_BTN3,  MS_WHLD, NK_TOGG, MS_WHLR, MS_ACL0
 
-#    define LEFT_MOUSE_THUMB_CLUSTER  _______, _______, SB_RSTL
-#    define RIGHT_MOUSE_THUMB_CLUSTER KC_MS_BTN1, KC_MS_BTN2, _______
+#    define LEFT_MOUSE_THUMB_CLUSTER  _______, KC_DEL , KC_TAB
+#    define RIGHT_MOUSE_THUMB_CLUSTER MS_BTN1, MS_BTN2, _______
 #endif
 
 #define RIGHT_NAV_ROW_1 KC_HOME , KC_PGUP, KC_UP  , KC_VOLU , KC_MPRV
@@ -241,7 +247,7 @@ enum sjb_layers {
 #define LEFT_NAV_THUMB_CLUSTER      LEFT_RAISE_THUMB_CLUSTER
 #define RIGHT_NAV_THUMB_CLUSTER     TRANSPARENT_THUMB_CLUSTER
 
-#define LEFT_HOME_ROW_THUMB_CLUSTER  _______, KC_DEL, KC_TAB
+#define LEFT_HOME_ROW_THUMB_CLUSTER  TRANSPARENT_THUMB_CLUSTER
 #define RIGHT_HOME_ROW_THUMB_CLUSTER TRANSPARENT_THUMB_CLUSTER
 
 #define LAYOUT_wrapper(...) LAYOUT(__VA_ARGS__)

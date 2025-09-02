@@ -1,3 +1,12 @@
+#pragma once
+
+#ifdef TAPPING_TERM
+#undef TAPPING_TERM
+#endif
+
+#define TAPPING_TERM 0
+#define PTH_MODULE_ENABLE 1
+
 #define EE_HANDS
 
 // When USB_VBUS_PIN is not defined, SPLIT_USB_DETECT is used.

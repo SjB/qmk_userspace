@@ -90,7 +90,8 @@ bool process_mouse_hold(uint16_t keycode, keyrecord_t* record, uint16_t hold_key
 #endif
 
 static uint8_t mod_state;
-bool           process_special_keys(uint16_t keycode, keyrecord_t* record) {
+bool process_special_keys(uint16_t keycode, keyrecord_t* record) {
+
     mod_state = get_mods();
 
 #ifdef SB_THUMB_TAB
@@ -138,29 +139,11 @@ bool           process_special_keys(uint16_t keycode, keyrecord_t* record) {
     return true;
 };
 
-uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
-    // If you quickly hold a tap-hold key after tapping it, the tap action is
-    // repeated. Key repeating is useful e.g. for Vim navigation keys, but can
-    // lead to missed triggers in fast typing. Here, returning 0 means we
-    // instead want to "force hold" and disable key repeating.
-    if (IS_QK_MOD_TAP(keycode) || IS_QK_LAYER_TAP(keycode)) {
-        switch (keycode & 0xff) { // strip mod tap
-            case KC_G:
-            case KC_F:
-            case KC_D:
-            case KC_S:
-            case KC_A:
-            case KC_H:
-            case KC_J:
-            case KC_K:
-            case KC_L:
-            case KC_BSPC:
-            case KC_SPC:
-                return QUICK_TAP_TERM;
-        }
-    }
-    return 0; // Otherwise, force hold and disable key repeating.
+#ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
+bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
+    return (IS_QK_MOD_TAP(keycode) || IS_QK_LAYER_TAP(keycode));
 }
+#endif
 
 #ifdef  CHORDAL_HOLD
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode,  keyrecord_t*  other_record) {
@@ -180,18 +163,18 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, u
 
 /*
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
-  switch (keycode) {
+  switch (keycode & 0xff) { // strip mod tap
     // Increase the tapping term a little for slower ring and pinky fingers.
-    case HR_A:
-    case HR_S:
-    case HR_D:
-    case HR_F:
-    case HR_G:
-    case HR_H:
-    case HR_J:
-    case HR_K:
-    case HR_L:
-    case HR_SCLN:
+    case KC_A:
+    case KC_S:
+    case KC_D:
+    case KC_F:
+    case KC_G:
+    case KC_H:
+    case KC_J:
+    case KC_K:
+    case KC_L:
+    case KC_SCLN:
       return TAPPING_TERM + 15;
     default:
       return TAPPING_TERM;
@@ -215,6 +198,7 @@ bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, ui
 uint16_t achordion_timeout(uint16_t tap_hold_keycode) {
     switch (tap_hold_keycode) {
         case SB_BSPC:
+        case SB_SPC:
         case SB_ENT:
         case SB_ESC:
             return 0;
@@ -319,16 +303,6 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 
     return true;
 }
-
-#ifdef HOLD_ON_OTHER_KEY_PRESS_PER_KEY
-bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
-    if (IS_QK_LAYER_TAP(keycode)) {
-        return true;
-    }
-
-    return false;
-}
-#endif
 
 #ifdef SMTD_ENABLE
 void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {

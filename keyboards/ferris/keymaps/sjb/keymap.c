@@ -9,6 +9,16 @@
 #define _RIGHT_SWEEP_THUMB_TRIM(a, b, c) a, b
 #define _LEFT_SWEEP_THUMB_TRIM(a, b, c) b, c
 
+#if defined(CHORDAL_ENABLE)
+const char chordal_hold_layout[MATRIX_ROWS][MATRIX_COLS] PROGMEM =
+    LAYOUT(
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
+        'L', 'L', 'L', 'L', 'L',  'R', 'R', 'R', 'R', 'R',
+                       '*', '*',  '*', '*',
+    );
+#endif
+
 const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
   [_QWERTY] = LAYOUT_wrapper(
    LEFT_QW_ROW_1 , RIGHT_QW_ROW_1 ,
@@ -50,6 +60,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_SWEEP_THUMB_TRIM(LEFT_MOUSE_THUMB_CLUSTER) ,
     RIGHT_SWEEP_THUMB_TRIM(RIGHT_MOUSE_THUMB_CLUSTER)
   ),
+#ifdef SB_HOMEROW_LAYER
   [_BHRL] = LAYOUT_wrapper(
     TRANS_ROW     , TRANS_ROW      ,
     LEFT_HOME_ROW , RIGHT_HOME_ROW ,
@@ -57,6 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     LEFT_SWEEP_THUMB_TRIM(LEFT_HOME_ROW_THUMB_CLUSTER),
     RIGHT_SWEEP_THUMB_TRIM(RIGHT_HOME_ROW_THUMB_CLUSTER)
   ),
+#endif
 #ifdef SB_LR_HOMEROW_LAYER
   [_RHRL] = LAYOUT_wrapper(
     TRANS_ROW, TRANS_ROW,

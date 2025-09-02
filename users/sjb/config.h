@@ -15,16 +15,19 @@
  */
 
 #ifdef TAPPING_TERM
-#    undef TAPPING_TERM
+#undef TAPPING_TERM
 #endif
 
-#define TAPPING_TERM 200 // default 200
+#define TAPPING_TERM 250 // default 200
+#define QUICK_TAP_TERM 150
+// Flow tap issue: When typing a Layer Hold key just after
+// a tap-hold key the layer-hold is tap version.
+//#define FLOW_TAP_TERM 130
+
 // #define RETRO_TAPPPING
 #define PERMISSIVE_HOLD
-// #define HOLD_ON_OTHER_KEY_PRESS
-#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
-#define QUICK_TAP_TERM_PER_KEY
-// #define QUICK_TAP_TERM
+#define HOLD_ON_OTHER_KEY_PRESS
+//#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #define COMBO_TERM 60
 #define COMBO_ONLY_FROM_LAYER 0
@@ -48,7 +51,5 @@
 
 #define ONESHOT_TAP_TOGGLE 2
 #define ONESHOT_TIMEOUT 2000
-
-//#define FLOW_TAP_TERM 150
 
 #define NKRO_DEFAULT_ON true

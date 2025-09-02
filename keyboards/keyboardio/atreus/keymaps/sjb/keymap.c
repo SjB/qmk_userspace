@@ -58,6 +58,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RIGHT_MOUSE_THUMB_CLUSTER ,
     _______ , _______ , _______
   ),
+#ifdef SB_HOMEROW_LAYER
   [_BHRL] = LAYOUT_wrapper(
     TRANS_ROW    ,                   TRANS_ROW,
     LEFT_HOME_ROW,                   RIGHT_HOME_ROW,
@@ -67,6 +68,7 @@ const uint16_t PROGMEM keymaps[][MATRIX_ROWS][MATRIX_COLS] = {
     RIGHT_HOME_ROW_THUMB_CLUSTER,
     _______ , _______, _______
   ),
+#endif
 #ifdef SB_LR_HOMEROW_LAYER
   [_RHRL] = LAYOUT_wrapper(
     TRANS_ROW    ,                   TRANS_ROW ,
