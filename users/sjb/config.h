@@ -18,15 +18,17 @@
 #undef TAPPING_TERM
 #endif
 
-#define TAPPING_TERM 250 // default 200
-#define QUICK_TAP_TERM 150
+#define TAPPING_TERM 220 // default 200
+#define QUICK_TAP_TERM 200
+//#define TAPPING_TERM_PER_KEY
+
 // Flow tap issue: When typing a Layer Hold key just after
 // a tap-hold key the layer-hold is tap version.
 //#define FLOW_TAP_TERM 130
 
 // #define RETRO_TAPPPING
 #define PERMISSIVE_HOLD
-#define HOLD_ON_OTHER_KEY_PRESS
+// #define HOLD_ON_OTHER_KEY_PRESS
 //#define HOLD_ON_OTHER_KEY_PRESS_PER_KEY
 
 #define COMBO_TERM 60

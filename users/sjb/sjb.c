@@ -145,7 +145,7 @@ bool get_hold_on_other_key_press(uint16_t keycode, keyrecord_t* record) {
 }
 #endif
 
-#ifdef  CHORDAL_HOLD
+#ifdef CHORDAL_HOLD
 bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode,  keyrecord_t*  other_record) {
     // If the keycode is a chordal hold key, return true.
     switch (tap_hold_keycode) {
@@ -159,9 +159,7 @@ bool get_chordal_hold(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, u
 }
 #endif
 
-#ifdef ACHORDION_ENABLE
-
-/*
+#ifdef TAPPING_TERM_PER_KEY
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
   switch (keycode & 0xff) { // strip mod tap
     // Increase the tapping term a little for slower ring and pinky fingers.
@@ -175,12 +173,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     case KC_K:
     case KC_L:
     case KC_SCLN:
-      return TAPPING_TERM + 15;
+      return 200;
     default:
-      return TAPPING_TERM;
+      return 150;
   }
 }
-*/
+#endif
+
+#ifdef ACHORDION_ENABLE
 
 bool achordion_chord(uint16_t tap_hold_keycode, keyrecord_t* tap_hold_record, uint16_t other_keycode, keyrecord_t* other_record) {
     switch (tap_hold_keycode) {
