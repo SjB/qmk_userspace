@@ -14,17 +14,18 @@
  * along with this program.  If not, see <http://www.gnu.org/licenses/>.
  */
 
-#ifdef TAPPING_TERM
+#ifdef TAPPING_TERM_OFF
 #undef TAPPING_TERM
+#define TAPPING_TERM 220 // default 200
 #endif
 
-#define TAPPING_TERM 220 // default 200
-#define QUICK_TAP_TERM 200
-//#define TAPPING_TERM_PER_KEY
+#define QUICK_TAP_TERM_PER_KEY
+// #define QUICK_TAP_TERM 200
+#define TAPPING_TERM_PER_KEY
 
 // Flow tap issue: When typing a Layer Hold key just after
 // a tap-hold key the layer-hold is tap version.
-//#define FLOW_TAP_TERM 130
+// #define FLOW_TAP_TERM 130
 
 // #define RETRO_TAPPPING
 #define PERMISSIVE_HOLD
