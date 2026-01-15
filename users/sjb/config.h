@@ -50,9 +50,9 @@
 #define MOUSEKEY_WHEEL_DELAY 100
 #define MOUSEKEY_WHEEL_TIME_TO_MAX 100
 
-#define LAYER_LOCK_IDLE_TIMEOUT 60000 // Turn off after 60 seconds.
+#define LAYER_LOCK_IDLE_TIMEOUT 30000 // Turn off after 60 seconds.
 
 #define ONESHOT_TAP_TOGGLE 2
-#define ONESHOT_TIMEOUT 2000
+//#define ONESHOT_TIMEOUT 1000
 
 #define NKRO_DEFAULT_ON true
