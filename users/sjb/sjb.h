@@ -26,8 +26,12 @@
 
 enum custom_keycodes {
   SB_LLOCK = SAFE_RANGE,
+#ifdef SB_MOUSE_BTN_HOLD
   SB_MS_HOLD,
+#endif
+#ifdef SB_RSTL_ENABLE
   SB_RSTL,
+#endif
 #ifdef SMTD_ENABLE
   SMTD_KEYCODES_BEGIN,
   CKC_A,
@@ -206,12 +210,12 @@ enum sjb_layers {
 #    define RIGHT_MOUSE_THUMB_CLUSTER OM_BTN2, OM_BTN3, _______
 
 #else
-#    define RIGHT_MOUSE_ROW_1 MS_BTN1,    MS_WHLU, MS_UP,   MS_WHLL, SB_EXTRA
-#    define RIGHT_MOUSE_ROW_2 SB_MS_HOLD, MS_LEFT, MS_DOWN, MS_RGHT, MS_ACL2
-#    define RIGHT_MOUSE_ROW_3 MS_BTN2,    MS_WHLD, NK_TOGG, MS_WHLR, MS_ACL0
+#    define RIGHT_MOUSE_ROW_1 SB_MS_HOLD, MS_WHLU, MS_UP,   MS_WHLL, SB_EXTRA
+#    define RIGHT_MOUSE_ROW_2 MS_BTN1,    MS_LEFT, MS_DOWN, MS_RGHT, MS_BTN3
+#    define RIGHT_MOUSE_ROW_3 MS_BTN2,    MS_WHLD, NK_TOGG, MS_WHLR, MS_BTN4
 
 #    define LEFT_MOUSE_THUMB_CLUSTER    _______, _______, SB_RSTL
-#    define RIGHT_MOUSE_THUMB_CLUSTER   MS_BTN3, MS_BTN4, _______
+#    define RIGHT_MOUSE_THUMB_CLUSTER   _______, _______, _______
 #endif
 
 #define RIGHT_NAV_ROW_1 KC_HOME , KC_PGUP, KC_UP  , KC_VOLU , KC_MPRV
