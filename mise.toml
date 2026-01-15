@@ -1,4 +1,5 @@
 [tools]
+"github:ZakKemble/avr-gcc-build" = "latest"
 python = "3.12.4"
 
 [env]
