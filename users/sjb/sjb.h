@@ -146,8 +146,8 @@ enum sjb_layers {
 #    define SB_MS_HOLD QK_LOCK
 #endif
 
-#define SB_SPC  RSE(KC_SPC)
-#define SB_BSPC NAV(KC_BSPC)
+#define SB_SPC  NAV(KC_SPC)
+#define SB_BSPC RSE(KC_BSPC)
 #define SB_ENT  MOUSE(KC_ENT)
 #define SB_ESC  NUM(KC_ESC)
 // #define SB_ESC   MOUSE(KC_ESC)
@@ -242,14 +242,16 @@ enum sjb_layers {
 
 #define RIGHT_PRIMARY_THUMB_CLUSTER SB_ENT , SB_SPC , OSM_SFT
 
-#define LEFT_RAISE_THUMB_CLUSTER    _______, KC_DEL , KC_TAB
+//#define LEFT_RAISE_THUMB_CLUSTER    _______, KC_DEL , KC_TAB
+#define LEFT_RAISE_THUMB_CLUSTER    _______, _______, SB_RSTL
 //#define LEFT_RAISE_THUMB_CLUSTER    _______, _______, SB_RSTL
 #define RIGHT_RAISE_THUMB_CLUSTER   TRANSPARENT_THUMB_CLUSTER
 
 #define LEFT_NUMPAD_THUMB_CLUSTER   _______, _______, SB_RSTL
 #define RIGHT_NUMPAD_THUMB_CLUSTER  _______, KC_EQL , _______
 
-#define LEFT_NAV_THUMB_CLUSTER      _______, _______, SB_RSTL
+#define LEFT_NAV_THUMB_CLUSTER      _______, KC_DEL , KC_TAB
+//#define LEFT_NAV_THUMB_CLUSTER      _______, _______, SB_RSTL
 #define RIGHT_NAV_THUMB_CLUSTER     TRANSPARENT_THUMB_CLUSTER
 
 #define LEFT_HOME_ROW_THUMB_CLUSTER  TRANSPARENT_THUMB_CLUSTER
