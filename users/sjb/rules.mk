@@ -17,6 +17,7 @@ ORBITAL_MOUSE_ENABLE = no
 
 SB_LR_HOMEROW_LAYER = no # homerow layer
 SB_HR_COMBO_KEY = no
+SB_GENERAL_COMBO_KEYS = yes
 
 SWAP_HANDS_ENABLE = yes
 SB_HOMEROW_LAYER = yes  # homerow mods
@@ -75,4 +76,8 @@ endif
 
 ifeq ($(strip $(SB_RSTL_ENABLE)), yes)
 OPT_DEFS += -DSB_RSTL_ENABLE
+endif
+
+ifeq ($(strip $(SB_GENERAL_COMBO_KEYS)), yes)
+OPT_DEFS += -DCOMBO_GENERAL_KEYS
 endif
