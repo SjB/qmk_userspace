@@ -5,3 +5,4 @@ python = "3.12.4"
 [env]
 _.python.venv = "../.vqmk"
 QMK_HOME = "{{config_root}}/../qmk_firmware"
+QMK_USERSPACE = "{{config_root}}"
