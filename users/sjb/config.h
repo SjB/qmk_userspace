@@ -19,6 +19,11 @@
 #define TAPPING_TERM 220 // default 200
 #endif
 
+#ifdef CHORDAL_HOLD
+#undef TAPPING_TERM
+#define TAPPING_TERM 250
+#endif
+
 #define QUICK_TAP_TERM_PER_KEY
 // #define QUICK_TAP_TERM 200
 #define TAPPING_TERM_PER_KEY

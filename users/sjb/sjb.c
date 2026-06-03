@@ -175,6 +175,7 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
             case KC_J:
             case KC_K:
             case KC_L:
+            case KC_SCLN:
                 return 120;
             case KC_BSPC:
             case KC_SPC:
@@ -194,15 +195,14 @@ uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
     case KC_H:
     case KC_J:
     case KC_K:
-        return 200;
-    case KC_BSPC:
-    case KC_SPC:
-        return 175;
     case KC_A:
     case KC_S:
     case KC_L:
     case KC_SCLN:
-      return 250;
+        return 200;
+    case KC_BSPC:
+    case KC_SPC:
+        return 175;
     default:
       return 150;
   }
@@ -340,10 +340,16 @@ void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
         SMTD_MT(CKC_S, KC_S, KC_LEFT_GUI)
         SMTD_MT(CKC_D, KC_D, KC_LEFT_CTRL)
         SMTD_MT(CKC_F, KC_F, KC_LSFT)
+        SMTD_MT(CKC_G, KC_G, KC_HYPR)
+        SMTD_MT(CKC_H, KC_H, KC_HYPR)
         SMTD_MT(CKC_J, KC_J, KC_RSFT)
         SMTD_MT(CKC_K, KC_K, KC_RIGHT_CTRL)
         SMTD_MT(CKC_L, KC_L, KC_RIGHT_GUI)
         SMTD_MT(CKC_SCLN, KC_SCLN, KC_LEFT_ALT)
+
     }
+
+    return SMTD_RESOLUTION_UNHANDLED;
 }
 #endif
+
