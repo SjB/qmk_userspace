@@ -336,19 +336,23 @@ bool process_record_user(uint16_t keycode, keyrecord_t* record) {
 }
 
 #ifdef SMTD_ENABLE
-void on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
+smtd_resolution on_smtd_action(uint16_t keycode, smtd_action action, uint8_t tap_count) {
     switch(keycode) {
-        SMTD_MT(CKC_A, KC_A, KC_LEFT_ALT)
-        SMTD_MT(CKC_S, KC_S, KC_LEFT_GUI)
-        SMTD_MT(CKC_D, KC_D, KC_LEFT_CTRL)
-        SMTD_MT(CKC_F, KC_F, KC_LSFT)
-        SMTD_MT(CKC_G, KC_G, KC_HYPR)
-        SMTD_MT(CKC_H, KC_H, KC_HYPR)
-        SMTD_MT(CKC_J, KC_J, KC_RSFT)
-        SMTD_MT(CKC_K, KC_K, KC_RIGHT_CTRL)
-        SMTD_MT(CKC_L, KC_L, KC_RIGHT_GUI)
-        SMTD_MT(CKC_SCLN, KC_SCLN, KC_LEFT_ALT)
+        SMTD_MT_ON_MKEY(CKC_A, KC_A, KC_LEFT_ALT)
+        SMTD_MT_ON_MKEY(CKC_S, KC_S, KC_LEFT_GUI)
+        SMTD_MT_ON_MKEY(CKC_D, KC_D, KC_LEFT_CTRL)
+        SMTD_MT_ON_MKEY(CKC_F, KC_F, KC_LSFT)
+        SMTD_MT_ON_MKEY(CKC_G, KC_G, KC_HYPR)
+        SMTD_MT_ON_MKEY(CKC_H, KC_H, KC_HYPR)
+        SMTD_MT_ON_MKEY(CKC_J, KC_J, KC_RSFT)
+        SMTD_MT_ON_MKEY(CKC_K, KC_K, KC_RIGHT_CTRL)
+        SMTD_MT_ON_MKEY(CKC_L, KC_L, KC_RIGHT_GUI)
+        SMTD_MT_ON_MKEY(CKC_SCLN, KC_SCLN, KC_LEFT_ALT)
 
+        SMTD_LT_ON_MKEY(CKC_BSPC, KC_BSPC, _RAISE)
+        SMTD_LT_ON_MKEY(CKC_SPC, KC_SPC, _NAV)
+        SMTD_LT_ON_MKEY(CKC_ENT, KC_ENT, _MOUSE)
+        SMTD_LT_ON_MKEY(CKC_ESC, KC_ESC, _NUMPAD)
     }
 
     return SMTD_RESOLUTION_UNHANDLED;

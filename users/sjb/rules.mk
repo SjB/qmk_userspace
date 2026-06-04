@@ -39,6 +39,7 @@ endif
 
 ifeq ($(strip $(SMTD_ENABLE)), yes)
 DEFERRED_EXEC_ENABLE = yes
+SRC += features/sm_td.c
 OPT_DEFS += -DSMTD_ENABLE
 endif
 
@@ -82,3 +83,4 @@ endif
 ifeq ($(strip $(SB_GENERAL_COMBO_KEYS)), yes)
 OPT_DEFS += -DCOMBO_GENERAL_KEYS
 endif
+

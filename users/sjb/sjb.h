@@ -38,10 +38,16 @@ enum custom_keycodes {
   CKC_S,
   CKC_D,
   CKC_F,
+  CKC_G,
+  CKC_H,
   CKC_J,
   CKC_K,
   CKC_L,
   CKC_SCLN,
+  CKC_ENT,
+  CKC_ESC,
+  CKC_SPC,
+  CKC_BSPC,
   SMTD_KEYCODES_END,
 #endif
   NEW_SAFE_RANGE
@@ -116,9 +122,9 @@ enum sjb_layers {
 #if defined(ACHORDION_ENABLE) || defined(FLOW_TAP_TERM)  || defined(CHORDAL_HOLD)
 #    define LHRM(k1, k2, k3, k4, k5) LALT_T(k1), LGUI_T(k2), LCTL_T(k3), LSFT_T(k4), HYPR_T(k5)
 #    define RHRM(k1, k2, k3, k4, k5) HYPR_T(k1), RSFT_T(k2), RCTL_T(k3), RGUI_T(k4), LALT_T(k5)
-#elif defined(SMTD_ENABLE)
-#    define LHRM(k1, k2, k3, k4, k5) CKC_A, CKC_S, CKC_D, CKC_F, KC_G
-#    define RHRM(k1, k2, k3, k4, k5) KC_J , CKC_J, CKC_K, CKC_L, CKC_SCLN
+#elif SMTD_ENABLE
+#    define LHRM(k1, k2, k3, k4, k5) CKC_A, CKC_S, CKC_D, CKC_F, CKC_G
+#    define RHRM(k1, k2, k3, k4, k5) CKC_H, CKC_J, CKC_K, CKC_L, CKC_SCLN
 #else
 #    define LHRM(k1, k2, k3, k4, k5) k1, k2, k3, k4, k5
 #    define RHRM(k1, k2, k3, k4, k5) k1, k2, k3, k4, k5
@@ -146,10 +152,18 @@ enum sjb_layers {
 #    define SB_MS_HOLD QK_LOCK
 #endif
 
+#ifdef SMTD_ENABLE
+#define SB_SPC  CKC_SPC
+#define SB_BSPC CKC_BSPC
+#define SB_ENT  CKC_ENT
+#define SB_ESC  CKC_ESC
+#else
 #define SB_SPC  NAV(KC_SPC)
 #define SB_BSPC RSE(KC_BSPC)
 #define SB_ENT  MOUSE(KC_ENT)
 #define SB_ESC  NUM(KC_ESC)
+#endif
+
 // #define SB_ESC   MOUSE(KC_ESC)
 
 #define CB_LLEADER SB_BSPC
@@ -160,7 +174,8 @@ enum sjb_layers {
 // #define SB_THUMB_SUPER ESC_GUI
 
 #ifdef CAPS_WORD_ENABLE
-#    define SB_CWTG CW_TOGG
+//#    define SB_CWTG CW_TOGG
+#    define SB_CWTG QK_BOOT
 #else
 #    define SB_CWTG KC_CAPS
 #endif

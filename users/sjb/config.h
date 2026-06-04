@@ -28,6 +28,12 @@
 // #define QUICK_TAP_TERM 200
 #define TAPPING_TERM_PER_KEY
 
+// SMTD
+#ifdef SMTD_ENABLE
+#define MAX_DEFERRED_EXECUTORS 10
+#define SMTD_GLOBAL_AGGREGATE_TAPS 1
+#endif
+
 // Flow tap issue: When typing a Layer Hold key just after
 // a tap-hold key the layer-hold is tap version.
 // #define FLOW_TAP_TERM 130
