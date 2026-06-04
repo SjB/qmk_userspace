@@ -179,6 +179,8 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
                 return 120;
             case KC_BSPC:
             case KC_SPC:
+            case KC_ENT:
+            case KC_ESC:
                 return 100;
         }
     }
