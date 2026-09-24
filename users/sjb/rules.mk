@@ -25,8 +25,13 @@ SB_HOMEROW_LAYER = yes  # homerow mods
 SB_LAYER_SWITCH_COMBO_KEY = no
 SB_MOUSE_BTN_HOLD = yes
 SB_RSTL_ENABLE = yes
+SB_RAISE_COMBO_ENABLE = yes
 
 SRC += sjb.c
+
+ifeq ($(strip $(SB_RAISE_COMBO_ENABLE)), yes)
+OPT_DEFS += -DRAISE_COMBO_ENABLE
+endif
 
 ifeq ($(strip $(ACHORDION_ENABLE)), yes)
 SRC += features/achordion.c

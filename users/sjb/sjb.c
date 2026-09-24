@@ -167,21 +167,25 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
     if (IS_QK_MOD_TAP(keycode) || IS_QK_LAYER_TAP(keycode)) {
         switch (keycode & 0xff) { // strip mod tap
             case KC_G:
-            case KC_F:
-            case KC_D:
-            case KC_S:
-            case KC_A:
             case KC_H:
+
+            case KC_F:
             case KC_J:
+
+            case KC_D:
             case KC_K:
+
+            case KC_S:
             case KC_L:
+
+            case KC_A:
             case KC_SCLN:
-                return 120;
+
             case KC_BSPC:
             case KC_SPC:
             case KC_ENT:
             case KC_ESC:
-                return 100;
+                return 200;
         }
     }
     return 0; // Otherwise, force hold and disable key repeating.
@@ -191,22 +195,27 @@ uint16_t get_quick_tap_term(uint16_t keycode, keyrecord_t* record) {
 uint16_t get_tapping_term(uint16_t keycode, keyrecord_t* record) {
   switch (keycode & 0xff) { // strip mod tap
     // Increase the tapping term a little for slower ring and pinky fingers.
-    case KC_D:
-    case KC_F:
-    case KC_G:
-    case KC_H:
-    case KC_J:
-    case KC_K:
     case KC_A:
-    case KC_S:
-    case KC_L:
     case KC_SCLN:
-        return 200;
+
     case KC_BSPC:
     case KC_SPC:
-        return 175;
+        return 200;
+/*
+    case KC_G:
+    case KC_H:
+
+    case KC_F:
+    case KC_J:
+
+    case KC_D:
+    case KC_K:
+
+    case KC_L:
+    case KC_S:
+*/
     default:
-      return 150;
+      return 190;
   }
 }
 #endif
